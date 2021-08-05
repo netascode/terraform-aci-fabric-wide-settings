@@ -1,9 +1,12 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "infraSetPol" {
+  dn         = "uni/infra/settings"
+  class_name = "infraSetPol"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    domainValidation           = var.domain_validation == true ? "yes" : "no"
+    enforceSubnetCheck         = var.enforce_subnet_check == true ? "yes" : "no"
+    opflexpAuthenticateClients = var.opflex_authentication == true ? "yes" : "no"
+    unicastXrEpLearnDisable    = var.disable_remote_endpoint_learn == true ? "yes" : "no"
+    validateOverlappingVlans   = var.overlapping_vlan_validation == true ? "yes" : "no"
+    enableRemoteLeafDirect     = var.remote_leaf_direct == true ? "yes" : "no"
   }
 }

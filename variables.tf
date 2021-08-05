@@ -1,31 +1,35 @@
-variable "name" {
-  description = "Tenant name."
-  type        = string
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
-  }
+variable "domain_validation" {
+  description = "Domain validation."
+  type        = bool
+  default     = false
 }
 
-variable "alias" {
-  description = "Tenant alias."
-  type        = string
-  default     = ""
-
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
-  }
+variable "enforce_subnet_check" {
+  description = "Enforce subnet check."
+  type        = bool
+  default     = false
 }
 
-variable "description" {
-  description = "Tenant description."
-  type        = string
-  default     = ""
+variable "opflex_authentication" {
+  description = "Opflex authentication."
+  type        = bool
+  default     = true
+}
 
-  validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
-  }
+variable "disable_remote_endpoint_learn" {
+  description = "Disable remote EP learn."
+  type        = bool
+  default     = false
+}
+
+variable "overlapping_vlan_validation" {
+  description = "Overlapping VLAN validation."
+  type        = bool
+  default     = false
+}
+
+variable "remote_leaf_direct" {
+  description = "Remote leaf direct."
+  type        = bool
+  default     = false
 }

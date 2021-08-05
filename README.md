@@ -1,22 +1,25 @@
 <!-- BEGIN_TF_DOCS -->
-[![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
+[![Tests](https://github.com/netascode/terraform-aci-fabric-wide-settings/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-fabric-wide-settings/actions/workflows/test.yml)
 
-# Terraform ACI Scaffolding Module
+# Terraform ACI Fabric Wide Settings Module
 
-Description
+Manages ACI Fabric Wide Settings
 
 Location in GUI:
-`Tenants` » `XXX`
+`System` » `System Settings` » `Fabric-Wide Settings`
 
 ## Examples
 
 ```hcl
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_fabric_wide_settings" {
+  source = "netascode/fabric-wide-settings/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  domain_validation             = true
+  enforce_subnet_check          = true
+  opflex_authentication         = false
+  disable_remote_endpoint_learn = true
+  overlapping_vlan_validation   = true
+  remote_leaf_direct            = true
 }
 
 ```
@@ -38,20 +41,22 @@ module "aci_scaffolding" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | Tenant name. | `string` | n/a | yes |
-| <a name="input_alias"></a> [alias](#input\_alias) | Tenant alias. | `string` | `""` | no |
-| <a name="input_description"></a> [description](#input\_description) | Tenant description. | `string` | `""` | no |
+| <a name="input_domain_validation"></a> [domain\_validation](#input\_domain\_validation) | Domain validation. | `bool` | `false` | no |
+| <a name="input_enforce_subnet_check"></a> [enforce\_subnet\_check](#input\_enforce\_subnet\_check) | Enforce subnet check. | `bool` | `false` | no |
+| <a name="input_opflex_authentication"></a> [opflex\_authentication](#input\_opflex\_authentication) | Opflex authentication. | `bool` | `true` | no |
+| <a name="input_disable_remote_endpoint_learn"></a> [disable\_remote\_endpoint\_learn](#input\_disable\_remote\_endpoint\_learn) | Disable remote EP learn. | `bool` | `false` | no |
+| <a name="input_overlapping_vlan_validation"></a> [overlapping\_vlan\_validation](#input\_overlapping\_vlan\_validation) | Overlapping VLAN validation. | `bool` | `false` | no |
+| <a name="input_remote_leaf_direct"></a> [remote\_leaf\_direct](#input\_remote\_leaf\_direct) | Remote leaf direct. | `bool` | `false` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `fvTenant` object. |
-| <a name="output_name"></a> [name](#output\_name) | Tenant name. |
+| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `infraSetPol` object. |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aci_rest.fvTenant](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.infraSetPol](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
 <!-- END_TF_DOCS -->

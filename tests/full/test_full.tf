@@ -14,35 +14,56 @@ terraform {
 module "main" {
   source = "../.."
 
-  name        = "ABC"
-  alias       = "ALIAS"
-  description = "DESCR"
+  domain_validation             = true
+  enforce_subnet_check          = true
+  opflex_authentication         = false
+  disable_remote_endpoint_learn = true
+  overlapping_vlan_validation   = true
+  remote_leaf_direct            = false
 }
 
-data "aci_rest" "fvTenant" {
-  dn = "uni/tn-ABC"
+data "aci_rest" "infraSetPol" {
+  dn = "uni/infra/settings"
 
   depends_on = [module.main]
 }
 
-resource "test_assertions" "fvTenant" {
-  component = "fvTenant"
+resource "test_assertions" "infraSetPol" {
+  component = "infraSetPol"
 
-  equal "name" {
-    description = "name"
-    got         = data.aci_rest.fvTenant.content.name
-    want        = "ABC"
+  equal "domainValidation" {
+    description = "domainValidation"
+    got         = data.aci_rest.infraSetPol.content.domainValidation
+    want        = "yes"
   }
 
-  equal "nameAlias" {
-    description = "nameAlias"
-    got         = data.aci_rest.fvTenant.content.nameAlias
-    want        = "ALIAS"
+  equal "enforceSubnetCheck" {
+    description = "enforceSubnetCheck"
+    got         = data.aci_rest.infraSetPol.content.enforceSubnetCheck
+    want        = "yes"
   }
 
-  equal "descr" {
-    description = "descr"
-    got         = data.aci_rest.fvTenant.content.descr
-    want        = "DESCR"
+  equal "opflexpAuthenticateClients" {
+    description = "opflexpAuthenticateClients"
+    got         = data.aci_rest.infraSetPol.content.opflexpAuthenticateClients
+    want        = "no"
+  }
+
+  equal "unicastXrEpLearnDisable" {
+    description = "unicastXrEpLearnDisable"
+    got         = data.aci_rest.infraSetPol.content.unicastXrEpLearnDisable
+    want        = "yes"
+  }
+
+  equal "validateOverlappingVlans" {
+    description = "validateOverlappingVlans"
+    got         = data.aci_rest.infraSetPol.content.validateOverlappingVlans
+    want        = "yes"
+  }
+
+  equal "enableRemoteLeafDirect" {
+    description = "enableRemoteLeafDirect"
+    got         = data.aci_rest.infraSetPol.content.enableRemoteLeafDirect
+    want        = "no"
   }
 }

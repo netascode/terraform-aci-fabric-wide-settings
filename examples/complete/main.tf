@@ -1,7 +1,10 @@
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_fabric_wide_settings" {
+  source = "netascode/fabric-wide-settings/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  domain_validation             = true
+  enforce_subnet_check          = true
+  opflex_authentication         = false
+  disable_remote_endpoint_learn = true
+  overlapping_vlan_validation   = true
+  remote_leaf_direct            = true
 }
