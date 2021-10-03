@@ -13,7 +13,8 @@ Note that this example will create resources. Resources can be destroyed with `t
 
 ```hcl
 module "aci_fabric_wide_settings" {
-  source = "netascode/fabric-wide-settings/aci"
+  source  = "netascode/fabric-wide-settings/aci"
+  version = ">= 0.0.1"
 
   domain_validation             = true
   enforce_subnet_check          = true
