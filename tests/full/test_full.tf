@@ -19,7 +19,7 @@ module "main" {
   opflex_authentication         = false
   disable_remote_endpoint_learn = true
   overlapping_vlan_validation   = true
-  remote_leaf_direct            = false
+  remote_leaf_direct            = true
 }
 
 data "aci_rest" "infraSetPol" {
@@ -64,6 +64,6 @@ resource "test_assertions" "infraSetPol" {
   equal "enableRemoteLeafDirect" {
     description = "enableRemoteLeafDirect"
     got         = data.aci_rest.infraSetPol.content.enableRemoteLeafDirect
-    want        = "no"
+    want        = "yes"
   }
 }
