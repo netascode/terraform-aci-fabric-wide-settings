@@ -13,7 +13,7 @@ Location in GUI:
 ```hcl
 module "aci_fabric_wide_settings" {
   source  = "netascode/fabric-wide-settings/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   domain_validation             = true
   enforce_subnet_check          = true
@@ -22,7 +22,6 @@ module "aci_fabric_wide_settings" {
   overlapping_vlan_validation   = true
   remote_leaf_direct            = true
 }
-
 ```
 
 ## Requirements
@@ -30,13 +29,13 @@ module "aci_fabric_wide_settings" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 0.2.0 |
+| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 0.2.0 |
+| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 2.0.0 |
 
 ## Inputs
 
@@ -59,5 +58,5 @@ module "aci_fabric_wide_settings" {
 
 | Name | Type |
 |------|------|
-| [aci_rest.infraSetPol](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest_managed.infraSetPol](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->

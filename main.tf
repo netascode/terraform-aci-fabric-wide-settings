@@ -1,4 +1,4 @@
-resource "aci_rest" "infraSetPol" {
+resource "aci_rest_managed" "infraSetPol" {
   dn         = "uni/infra/settings"
   class_name = "infraSetPol"
   content = {

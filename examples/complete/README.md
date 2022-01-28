@@ -14,7 +14,7 @@ Note that this example will create resources. Resources can be destroyed with `t
 ```hcl
 module "aci_fabric_wide_settings" {
   source  = "netascode/fabric-wide-settings/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   domain_validation             = true
   enforce_subnet_check          = true
@@ -23,6 +23,5 @@ module "aci_fabric_wide_settings" {
   overlapping_vlan_validation   = true
   remote_leaf_direct            = true
 }
-
 ```
 <!-- END_TF_DOCS -->
