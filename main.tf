@@ -8,5 +8,6 @@ resource "aci_rest_managed" "infraSetPol" {
     unicastXrEpLearnDisable    = var.disable_remote_endpoint_learn == true ? "yes" : "no"
     validateOverlappingVlans   = var.overlapping_vlan_validation == true ? "yes" : "no"
     enableRemoteLeafDirect     = var.remote_leaf_direct == true ? "yes" : "no"
+    reallocateGipo             = var.reallocate_gipo == true ? "yes" : "no"
   }
 }
