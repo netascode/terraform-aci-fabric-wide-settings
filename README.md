@@ -47,6 +47,7 @@ module "aci_fabric_wide_settings" {
 | <a name="input_disable_remote_endpoint_learn"></a> [disable\_remote\_endpoint\_learn](#input\_disable\_remote\_endpoint\_learn) | Disable remote EP learn. | `bool` | `false` | no |
 | <a name="input_overlapping_vlan_validation"></a> [overlapping\_vlan\_validation](#input\_overlapping\_vlan\_validation) | Overlapping VLAN validation. | `bool` | `false` | no |
 | <a name="input_remote_leaf_direct"></a> [remote\_leaf\_direct](#input\_remote\_leaf\_direct) | Remote leaf direct. | `bool` | `false` | no |
+| <a name="input_reallocate_gipo"></a> [reallocate\_gipo](#input\_reallocate\_gipo) | Reallocate GIPo | `bool` | `false` | no |
 
 ## Outputs
 

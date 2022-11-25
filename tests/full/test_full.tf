@@ -22,6 +22,7 @@ module "main" {
   disable_remote_endpoint_learn = true
   overlapping_vlan_validation   = true
   remote_leaf_direct            = true
+  reallocate_gipo               = true
 }
 
 data "aci_rest_managed" "infraSetPol" {
@@ -66,6 +67,12 @@ resource "test_assertions" "infraSetPol" {
   equal "enableRemoteLeafDirect" {
     description = "enableRemoteLeafDirect"
     got         = data.aci_rest_managed.infraSetPol.content.enableRemoteLeafDirect
+    want        = "yes"
+  }
+
+  equal "reallocateGipo" {
+    description = "reallocateGipo"
+    got         = data.aci_rest_managed.infraSetPol.content.reallocateGipo
     want        = "yes"
   }
 }
