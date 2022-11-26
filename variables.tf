@@ -33,3 +33,9 @@ variable "remote_leaf_direct" {
   type        = bool
   default     = false
 }
+
+variable "reallocate_gipo" {
+  description = "Reallocate GIPo"
+  type        = bool
+  default     = false
+}
